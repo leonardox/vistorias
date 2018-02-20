@@ -1,0 +1,72 @@
+<!--
+  Generated template for the FastSurveyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Vistoria</ion-title>
+  </ion-navbar>
+  <script>
+      function okay() {
+        console.log("okay");
+        //this.name = "ios-thumbs-up";
+      }; 
+    </script>
+</ion-header>
+
+
+<ion-content padding>
+  <br/>
+  <br/>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-10>
+        <ion-list>
+          <ion-item>
+            <ion-label>Cômodo</ion-label>
+            <ion-select [(ngModel)]="comodo" multiple="false">
+              <ion-option *ngFor="let comodo of location_list" [value]="comodo">{{comodo}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear>
+          <ion-icon name="add" (click)="click()"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h6>Item de Verificação</h6>
+    </ion-row>
+
+    <ion-row *ngFor="let item of verification_list">
+      <ion-col col-1>
+        <button ion-button item-end clear large>
+          <ion-icon name="ios-camera-outline" (click)="click()"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-1>
+        </ion-col>
+      <ion-col col-6>
+        <p>{{ item.item }}</p>
+      </ion-col>
+      <ion-col col-1>
+        <button  ion-button item-end clear color="secondary">
+          <ion-icon [name]="item.okay" (click)="clickOkay(item.item);"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-1>
+        </ion-col>
+      <ion-col col-1>
+        <button ion-button item-end clear color="danger">
+          <ion-icon [name]="item.notokay" (click)="clickNotOkay(item.item)"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
